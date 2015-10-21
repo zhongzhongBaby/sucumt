@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>人员管理</title>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$.getJSON("MemberQuery", function(jsonData) {
+					var html = "<tr align=\"center\">";
+					for (var i = 0; i < jsonData.length; i++) {
+						html += "<td align=\"center\">" + jsonData[i].roleName
+								+ "</td>";
+						html += "<td align=\"center\">"
+								+ jsonData[i].memberName + "</td>";
+						html += "<td align=\"center\">" + jsonData[i].school
+								+ "</td>";
+						html += "<td align=\"center\">" + jsonData[i].hometown
+								+ "</td>";
+						html += "<td align=\"center\">" + jsonData[i].sex
+								+ "</td>";
+						html += "<td align=\"center\">" + jsonData[i].birth
+								+ "</td>";
+						html += "<td align=\"center\">" + jsonData[i].address
+								+ "</td>";
+						html += "<td align=\"center\">" + jsonData[i].tel
+								+ "</td>";
+						html += "<td align=\"center\"><a href=\"EditMember.html?memberId="+jsonData[i].memberId+"\">编辑</a></td>";
+						html += "</tr>";
+					}
+					$("tr[id='member_head']").after(html);
+				});
+			});
+</script>
+</head>
+<body>
+	<table align="center" id="memberDetail" style="width: 80%">
+		<tr align="center" id="member_head">
+			<td align="center">职位</td>
+			<td align="center">姓名</td>
+			<td align="center">学院</td>
+			<td align="center">籍贯</td>
+			<td align="center">性别</td>
+			<td align="center">生日</td>
+			<td align="center">宿舍</td>
+			<td align="center">电话</td>
+			<td align="center"></td>
+		</tr>
+		
+		<tr align="center">
+			<td align="center" colspan="8"><a href="AddMembers.html">点此添加部门成员信息</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
