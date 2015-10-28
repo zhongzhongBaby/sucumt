@@ -16,16 +16,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Servlet implementation class MemberQuery
+ * Servlet implementation class MeetingQuery
  */
-@WebServlet("/MemberQuery")
-public class MemberQuery extends HttpServlet {
+@WebServlet("/MeetingQuery")
+public class MeetingQuery extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MemberQuery() {
+	public MeetingQuery() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,37 +38,29 @@ public class MemberQuery extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-
-		String departmentId = (String) request.getSession().getAttribute(
-				"departmentId");
-		String mySql = "select * from member,role where role.role_id=member.member_roleid and member_dpid='"
-				+ departmentId + "'";
+		
+		String DeptId = request.getParameter("DeptId");
+		System.out.println(DeptId);
+		int i = 0;
+		String mySql = "select member_name,tuizhidate from member where member_dpid='"
+				+ DeptId + "'";
+		System.out.println(mySql);
 		PackingDatabase packing = new PackingDatabase();
 		try {
 			// 执行查询方法
 			ResultSet rs = packing.query(mySql);
 			response.setContentType("text/x-json;charset=utf-8");
-
 			PrintWriter out = response.getWriter();
 			JSONArray ja = new JSONArray();
 			while (rs.next()) {
-				JSONObject jo = new JSONObject();
-				jo.put("roleName", rs.getString("role_name"));
-				jo.put("memberName", rs.getString("member_name"));
-				jo.put("memberId", rs.getString("member_id"));
-				jo.put("school", rs.getString("xueyuan"));
-				jo.put("hometown", rs.getString("jiguan"));
-				jo.put("sex", rs.getString("sex"));
-				jo.put("birth", rs.getString("birthday"));
-				jo.put("hometown", rs.getString("jiguan"));
-				jo.put("tel", rs.getString("tel"));
-				jo.put("address", rs.getString("address"));
-				if (!(rs.getString("tuizhidate") == null)) {
-					jo.put("tuizhidate", rs.getString("tuizhidate"));
-				} else {
-					jo.put("tuizhidate", "1");
+				if(rs.getString("tuizhidate") == null){
+					JSONObject jo = new JSONObject();
+					i++;
+					jo.put("memberName", rs.getString("member_name"));
+					jo.put("yingdao", i);
+					ja.put(jo);
 				}
-				ja.put(jo);
+				
 			}
 			rs.close();
 			out.print(ja.toString());

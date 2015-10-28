@@ -49,14 +49,15 @@ public class AddMember extends HttpServlet {
 		String role = request.getParameter("role");
 		String hometown = request.getParameter("hometown");
 		String sex = request.getParameter("sex");
-		String birth = request.getParameter("birth");
+		String birth = request.getParameter("year")+"-"+request.getParameter("month")+"-"+request.getParameter("day");
+		String ruzhidate = request.getParameter("year1")+"-"+request.getParameter("month1")+"-"+request.getParameter("day1");
 		String tel = request.getParameter("tel");
 		String address = request.getParameter("address");
 
 		String deptId = (String) request.getSession().getAttribute(
 				"departmentId");
 
-		String mySql = "insert into member (member_name,member_roleid,member_dpid,xueyuan,jiguan,sex,birthday,tel,address) values('"
+		String mySql = "insert into member (member_name,member_roleid,member_dpid,xueyuan,jiguan,sex,birthday,ruzhidate,tel,address) values('"
 				+ memName
 				+ "','"
 				+ role
@@ -71,6 +72,8 @@ public class AddMember extends HttpServlet {
 				+ "','"
 				+ birth
 				+ "','"
+				+ruzhidate
+				+"','"
 				+ tel
 				+ "','" + address + "')";
 		PackingDatabase packing = new PackingDatabase();

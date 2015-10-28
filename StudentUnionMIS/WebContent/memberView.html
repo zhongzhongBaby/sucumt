@@ -8,28 +8,54 @@
 	$(document).ready(
 			function() {
 				$.getJSON("MemberQuery", function(jsonData) {
-					var html = "<tr align=\"center\">";
+					var html = "";
+					var html1="";
 					for (var i = 0; i < jsonData.length; i++) {
-						html += "<td align=\"center\">" + jsonData[i].roleName
-								+ "</td>";
-						html += "<td align=\"center\">"
-								+ jsonData[i].memberName + "</td>";
-						html += "<td align=\"center\">" + jsonData[i].school
-								+ "</td>";
-						html += "<td align=\"center\">" + jsonData[i].hometown
-								+ "</td>";
-						html += "<td align=\"center\">" + jsonData[i].sex
-								+ "</td>";
-						html += "<td align=\"center\">" + jsonData[i].birth
-								+ "</td>";
-						html += "<td align=\"center\">" + jsonData[i].address
-								+ "</td>";
-						html += "<td align=\"center\">" + jsonData[i].tel
-								+ "</td>";
-						html += "<td align=\"center\"><a href=\"EditMember.html?memberId="+jsonData[i].memberId+"\">编辑</a></td>";
-						html += "</tr>";
-					}
+						/*  alert(jsonData[i].tuizhidate);  */
+						 if(jsonData[i].tuizhidate=="1"){  
+							html+="<tr align=\"center\">";
+							html += "<td align=\"center\">" + jsonData[i].roleName
+									+ "</td>";
+							html += "<td align=\"center\">"
+									+ jsonData[i].memberName + "</td>";
+							html += "<td align=\"center\">" + jsonData[i].school
+									+ "</td>";
+							html += "<td align=\"center\">" + jsonData[i].hometown
+									+ "</td>";
+							html += "<td align=\"center\">" + jsonData[i].sex
+									+ "</td>";
+							html += "<td align=\"center\">" + jsonData[i].birth
+									+ "</td>";
+							html += "<td align=\"center\">" + jsonData[i].address
+									+ "</td>";
+							html += "<td align=\"center\">" + jsonData[i].tel
+									+ "</td>";
+							html += "<td align=\"center\"><a href=\"EditMember.html?memberId="+jsonData[i].memberId+"\">编辑</a></td>";
+							html += "<td align=\"center\"><a href=\"RemoveMember.html?memberId="+jsonData[i].memberId+"\">退部</a></td>";
+							html += "</tr>";
+						}else{
+							html1+="<tr align=\"center\">";
+							html1 += "<td align=\"center\">" + jsonData[i].roleName
+									+ "</td>";
+							html1 += "<td align=\"center\">"
+									+ jsonData[i].memberName + "</td>";
+							html1 += "<td align=\"center\">" + jsonData[i].school
+									+ "</td>";
+							html1 += "<td align=\"center\">" + jsonData[i].hometown
+									+ "</td>";
+							html1 += "<td align=\"center\">" + jsonData[i].sex
+									+ "</td>";
+							html1 += "<td align=\"center\">" + jsonData[i].birth
+									+ "</td>";
+							html1 += "<td align=\"center\">" + jsonData[i].address
+									+ "</td>";
+							html1 += "<td align=\"center\">" + jsonData[i].tel
+									+ "</td>";
+							html1 += "</tr>";
+						}
+					} 
 					$("tr[id='member_head']").after(html);
+					$("tr[id='member_head1']").after(html1);
 				});
 			});
 </script>
@@ -46,11 +72,28 @@
 			<td align="center">宿舍</td>
 			<td align="center">电话</td>
 			<td align="center"></td>
+			<td align="center"></td>
 		</tr>
 		
 		<tr align="center">
 			<td align="center" colspan="8"><a href="AddMembers.html">点此添加部门成员信息</a>
 			</td>
+		</tr>
+	</table>
+	<br /><br /><br />
+	<center>
+		<h3>以下是已退部成员信息</h3>
+	</center>
+	<table align="center" id="memberDetail1" style="width: 80%">
+		<tr align="center" id="member_head1">
+			<td align="center">职位</td>
+			<td align="center">姓名</td>
+			<td align="center">学院</td>
+			<td align="center">籍贯</td>
+			<td align="center">性别</td>
+			<td align="center">生日</td>
+			<td align="center">宿舍</td>
+			<td align="center">电话</td>
 		</tr>
 	</table>
 </body>

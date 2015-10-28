@@ -61,6 +61,7 @@ public class SingleMemQuery extends HttpServlet {
 				jo.put("hometown", rs.getString("jiguan"));
 				jo.put("tel", rs.getString("tel"));
 				jo.put("address", rs.getString("address"));
+				jo.put("ruzhidate", rs.getString("ruzhidate"));
 				break;
 			}
 			rs.close();

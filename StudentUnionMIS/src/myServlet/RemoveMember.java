@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import myJavaBean.PackingDatabase;
 
 /**
- * Servlet implementation class EditMember
+ * Servlet implementation class RemoveMember
  */
-@WebServlet("/EditMember")
-public class EditMember extends HttpServlet {
+@WebServlet("/RemoveMember")
+public class RemoveMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditMember() {
+    public RemoveMember() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,17 +40,9 @@ public class EditMember extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		String memName = request.getParameter("memName");
-		String school = request.getParameter("school");
-		String role = request.getParameter("role");
-		String hometown = request.getParameter("hometown");
-		String sex = request.getParameter("sex");
-		String birth = request.getParameter("year")+"-"+request.getParameter("month")+"-"+request.getParameter("day");
-		String tel = request.getParameter("tel");
-		String address = request.getParameter("address");
 		String memberId=request.getParameter("memberId");
-		
-		String mySql = "update member set member_name='"+memName+"',member_roleid='"+role+"',xueyuan='"+school+"',jiguan='"+hometown+"',sex='"+sex+"',birthday='"+birth+"',tel='"+tel+"',address='"+address+"' where member_id='"+memberId+"'";
+
+		String mySql = "update member set tuizhidate=(select CONVERT(varchar(100),getdate(),23)) where member_id='"+memberId+"'";
 		PackingDatabase packing = new PackingDatabase();
 		try {
 			// 执行查询方法

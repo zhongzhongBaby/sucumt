@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
 
 				if (auto != null) { // 勾选记住密码，保存cookie
 					Cookie cookie = new Cookie("user", username);
-					cookie.setMaxAge(3 * 60);
+					cookie.setMaxAge(10 * 60);
 					response.addCookie(cookie);
 					System.out.print("cookie已创建");
 				}

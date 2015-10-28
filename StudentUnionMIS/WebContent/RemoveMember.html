@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>修改成员信息</title>
+<title>退部处理</title>
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -29,10 +29,11 @@
 			$("option[id='month1'][value='"+jsonData.ruzhidate.substring(5,7)+"']").attr('selected', "selected");
 			$("option[id='day1'][value='"+jsonData.ruzhidate.substring(8,10)+"']").attr('selected', "selected");
 			
+			
 			$("input[name='tel']").val(jsonData.tel);
 			$("input[name='address']").val(jsonData.address);
 			
-			$("form[name='myForm']").attr('action',"EditMember?memberId="+memberId);
+			$("form[name='myForm']").attr('action',"RemoveMember?memberId="+memberId);
 		});
 		
 	});
@@ -43,11 +44,11 @@
 		<table align="center">
 			<tr align="center">
 				<td align="right">姓名：</td>
-				<td align="left"><input type="text" size="19" name="memName"></td>
+				<td align="left"><input type="text" size="19" name="memName" readonly="readonly"></td>
 			</tr>
 			<tr align="center">
 				<td align="right">学院：</td>
-				<td align="left"><select id="school" name="school">
+				<td align="left"><select id="school" name="school" disabled="disabled">
 						<option value="矿业学院">矿业学院</option>
 						<option value="安全学院">安全学院</option>
 						<option value="力建学院">力建学院</option>
@@ -64,30 +65,30 @@
 			</tr>
 			<tr align="center">
 				<td align="right">职位：</td>
-				<td align="left"><input type="radio" name="role" value="2">部长&emsp;
-					<input type="radio" name="role" value="5">副部长&emsp; <input
-					type="radio" name="role" value="3">干事</td>
+				<td align="left"><input type="radio" name="role" value="2" readonly="readonly">部长&emsp;
+					<input type="radio" name="role" value="5" readonly="readonly">副部长&emsp; <input
+					type="radio" name="role" value="3" readonly="readonly">干事</td>
 			</tr>
 			<tr align="center">
 				<td align="right">籍贯：</td>
-				<td align="left"><input type="text" size="19" name="hometown"></td>
+				<td align="left"><input type="text" size="19" name="hometown"  readonly="readonly"></td>
 			</tr>
 			<tr align="center">
 				<td align="right">性别：</td>
-				<td align="left"><input type="radio" name="sex" value="男">男&emsp;&emsp;
+				<td align="left"><input type="radio" name="sex" value="男" readonly="readonly">男&emsp;&emsp;
 					<input type="radio" name="sex" value="女">女</td>
 			</tr>
 			<tr align="center">
 				<td align="right">出生日期：</td>
-				<td align="left"><select id="year" name="year">
+				<td align="left"><select id="year" name="year" disabled="disabled">
 						<option id="year" value="1995">1995</option>
 						<option id="year" value="1996">1996</option>
 						<option id="year" value="1997">1997</option>
-				</select>&thinsp;年&ensp; <select id="month" name="month">
+				</select>&thinsp;年&ensp; <select id="month" name="month" disabled="disabled">
 						<option id="month" value="01">1</option>
 						<option id="month" value="02">2</option>
 						<option id="month" value="03">3</option>
-				</select>&thinsp;月&ensp; <select id="day" name="day">
+				</select>&thinsp;月&ensp; <select id="day" name="day" disabled="disabled">
 						<option id="day" value="12">12</option>
 						<option id="day" value="13">13</option>
 						<option id="day" value="21">21</option>
@@ -95,27 +96,30 @@
 			</tr>
 			<tr align="center">
 				<td align="right">联系方式：</td>
-				<td align="left"><input type="text" name="tel"></td>
+				<td align="left"><input type="text" name="tel"  readonly="readonly"></td>
 			</tr>
 			<tr align="center">
 				<td align="right">宿舍号：</td>
-				<td align="left"><input type="text" name="address"></td>
+				<td align="left"><input type="text" name="address" readonly="readonly"></td>
 			</tr>
 			<tr align="center">
 				<td align="right">出生日期：</td>
-				<td align="left"><select id="year1" name="year1">
+				<td align="left"><select id="year1" name="year1" disabled="disabled">
 						<option id="year1" value="1995">1995</option>
 						<option id="year1" value="1996">1996</option>
 						<option id="year1" value="1997">1997</option>
-				</select>&thinsp;年&ensp; <select id="month1" name="month1">
+				</select>&thinsp;年&ensp; <select id="month1" name="month1" disabled="disabled">
 						<option id="month1" value="01">1</option>
 						<option id="month1" value="02">2</option>
 						<option id="month1" value="03">3</option>
-				</select>&thinsp;月&ensp; <select id="day1" name="day1">
+				</select>&thinsp;月&ensp; <select id="day1" name="day1" disabled="disabled">
 						<option id="day1" value="12">12</option>
 						<option id="day1" value="13">13</option>
 						<option id="day1" value="21">21</option>
 				</select>&thinsp;日（jQuery日期选择插件）</td>
+			</tr>
+			<tr align="center">
+				<td colspan="2" align="center"><font color="red">本操作无法撤销，确认该成员退部？</font></td>
 			</tr>
 			<tr align="center">
 				<td colspan="2" align="center"><input type="submit" value="确认">
