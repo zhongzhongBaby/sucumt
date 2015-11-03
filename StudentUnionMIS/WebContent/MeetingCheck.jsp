@@ -23,9 +23,9 @@
 									var amount="";
 									for (var i = 0; i < jsonData.length; i++) {
 											html+="<td align=\"center\">"+ jsonData[i].memberName+"</td>"
-											html+="<td align=\"center\"><input type=\"radio\" onclick=\"aa()\" name=\"check"+i+"\" value=\"Y\"></td>";
-											html+="<td align=\"center\"><input type=\"radio\" onclick=\"bb()\" name=\"check"+i+"\" value=\"Q\"></td>";
-											html+="<td align=\"center\"><input type=\"radio\" onclick=\"cc()\" name=\"check"+i+"\" value=\"A\"></td>";
+											html+="<td align=\"center\"><input type=\"radio\" id=\"Y\" name=\"check"+i+"\" value=\"Y\"></td>";
+											html+="<td align=\"center\"><input type=\"radio\" id=\"Q\" name=\"check"+i+"\" value=\"Q\"></td>";
+											html+="<td align=\"center\"><input type=\"radio\" id=\"A\" name=\"check"+i+"\" value=\"A\"></td>";
 										if(i%2==1){
 											html+="</tr><tr>"
 										}
@@ -41,25 +41,21 @@
 			});		
 </script>
 <script type="text/javascript">
-	var i=0;
-	var j=0;
-	var p=0;
-	function aa(){
-		i++;
-	}
-	
-	function bb(){
-		j++;
-	}
-	
-	function cc(){
-		p++;
-	}
-	
 	function myFunction(){
+		var i=$("input[id='Y']:checked").length;
+		var j=$("input[id='Q']:checked").length;
+		var p=$("input[id='A']:checked").length;
 		$("input[name='shidao']").val(i);
 		$("input[name='qingjia']").val(j);
-		$("input[name='absent']").val(p);
+		$("input[name='absent']").val(p); 
+	}
+	
+	function aa(){
+		if(myForm.shidao.value==""||myForm.qingjia.value==""||myForm.absent.value==""){
+			alert("请先统计人数");
+		} else{
+			myForm.submit();
+		}
 	}
 </script>
 </head>
@@ -95,7 +91,7 @@
 							}
 							Date dt=new Date();
 						    SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd");
-						    /* System.out.println(matter1.format(dt)); */
+						     System.out.println(matter1.format(dt)); 
 						%>
 				</select></td>
 				<td align="right">会议日期：</td>
@@ -144,7 +140,7 @@
 			</tr>
 		</table>
 		<center>
-			<input type="button" onclick="myFunction()" value="统计人数" />&emsp;&emsp;&emsp;&emsp;<input type="submit" value="确认提交" />&emsp;&emsp;&emsp;&emsp;<input type="reset" value="重置" />
+			<input type="button" onclick="myFunction()" value="统计人数" />&emsp;&emsp;&emsp;&emsp;<input type="button" onclick="aa()" value="确认提交" />&emsp;&emsp;&emsp;&emsp;<input type="reset" value="重置" />
 		</center>
 	</form>
 
