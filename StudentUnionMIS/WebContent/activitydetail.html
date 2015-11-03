@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+ <script>
+ $(document).ready(function() {	
+	 var url = location.href;
+	　　//获取pid的参数值
+	　　var es=/activity_id=/;
+	　　es.exec(url);
+	　　var activity_id=RegExp.rightContext;
+	
+$.get("Showactivitydetail",{activity_id:activity_id} ,function(n){
+	var html = "";
+	for (var i=0; i < n.rows.length; i++) {
+		var r = n.rows[i];
+		$("#name").text(r.activity_name);
+	}
+}); 
+});  
+</script>
+
+</head>
+<body>
+<h2 align="center">学生活动审批表<h2>
+<table border="1" cellspacing="0" width="80%">
+<tr>
+<td rowspan="3" width="35px">学生策划活动组织情况</td>
+<td>活动名称</td><td id="name" colspan="3"></td>
+</tr>
+<tr>
+<td>活动时间</td><td width="200px"></td><td>申请活动地点</td><td width="200px"></td>
+</tr>
+<tr>
+
+<td>主办单位</td><td></td><td>经费预算</td><td></td>
+
+</tr>
+</table>
+
+
+
+</body>
+</html>

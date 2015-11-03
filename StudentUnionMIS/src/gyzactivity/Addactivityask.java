@@ -18,10 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import Tool.IpTimeStamp;
+
 /**
  * Servlet implementation class Addactivityask
  */
-@MultipartConfig
+@MultipartConfig(location = "G:\\")
 @WebServlet("/Addactivityask")
 
 public class Addactivityask extends HttpServlet {
@@ -44,15 +46,24 @@ public class Addactivityask extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		String path = getPath("/activityplan/");
-		System.out.println(path);
+		/*System.out.println(path);*/
+		
+		
+		
+		
+			
+			
 		Part part = request.getPart("activityask");
 		String filename = getFilename(part);
-		writeTo(path, filename, part);
+		/*writeTo(path, filename, part);*/
+		part.write(filename);
+		
+		
+		
+		
+		
+		
 		out.println(filename);
-	
-		
-		
-		
 		try {
 			Connection conn = eb.javaweb.DBUtil.getConnection();
 			PreparedStatement ptmt = conn.prepareStatement("insert into activity (activity_name) values(?)");
@@ -98,7 +109,9 @@ public class Addactivityask extends HttpServlet {
 		return filename;
 	}
 
-	private void writeTo(String path, String filename, Part part)
+	
+	
+	/*private void writeTo(String path, String filename, Part part)
 			throws IOException, FileNotFoundException {
 		InputStream in = part.getInputStream();
 		OutputStream out = new FileOutputStream(path + filename);
@@ -110,7 +123,7 @@ public class Addactivityask extends HttpServlet {
 		in.close();
 		out.close();
 	}
-	
+	*/
 	public String getPath(String p){
 		return this.getServletContext().getRealPath(p);
 	}
