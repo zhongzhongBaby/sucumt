@@ -1,0 +1,57 @@
+.header-banner{
+	position:relative;
+}
+.baneer-grid1{
+background: url(../images/img1.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  min-height: 350px;
+  float:left;
+  width:33.33%;
+}
+.baneer-grid2{
+background: url(../images/img2.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  min-height: 350px;
+  float:left;
+  width:33.33%;
+}
+
+.baneer-grid3{
+background: url(../images/img3.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  min-height: 350px;
+  float:left;
+  width:33.33%;
+  position: relative;
+}
+.baneer-grid4{
+background: url(../images/img4.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  min-height: 350px;
+  float:left;
+  width:33.33%;
+}
+.baneer-grid5{
+background: url(../images/img5.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  min-height: 350px;
+  float:left;
+  width:33.33%;
+}
+.baneer-grid6{
+background: url(../images/img6.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  min-height: 350px;
+  float:left;
+  width:33.33%;
+}
+.zong{
+  margin: 50% 55% 50% 45%;
+}
+.zhong{
+  text-align: center;
+  font-size: 8em;
+}
+.zhong2{
+  font-size: 4em;
+}
