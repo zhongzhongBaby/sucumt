@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>部门信息</title>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {	
+				$.get("Showbumenxinxi",{} ,function(n){
+					
+					$("table tr:gt(0)").remove();//除了第一行都删了。\
+					var html = "";
+					for (var i=0; i < n.rows.length; i++) {
+						var r = n.rows[i];
+								html+="<tr>";
+								html+="<td>"+r.department_name+"</td></td><td>"+r.department_renshu+"</td>";
+								html+="<td>"+r.department_zhineng+"</td><td>"+r.meetingtime+"</td>";
+								html+="	<td><a href=\"#\" class=\"xiugai\" >修改会议时间</a></td><td><a>详情</a></td>";
+								html+="</tr>"; 
+					}
+					$("table").append(html);
+					
+					$(".xiugai").click(function(){
+						$("form lable").text($(this).parents("tr").find("td").eq(0).text()+"会议时间 ");
+						$("form input:eq(0)").attr("type","text");
+						$("form input:eq(0)").attr("value",$(this).parents("tr").find("td").eq(3).text());
+						$("form input:eq(1)").attr("type","submit");
+						$("form input:eq(1)").attr("value","修改 ");
+						$("form input:eq(2)").attr("value", $(this).parents("tr").find("td").eq(0).text());
+						
+					});
+				
+				});
+	
+	});  
+
+</script>
+
+
+
+
+</head>
+<body>
+<h1>部门信息显示</h1>
+<table border="1" cellspacing="0" width="80%">
+<tr>
+<td>部门名</td></td><td>部门职能</td>
+<td>部门人数</td><td>会议时间</td><td>修改会议时间</td><td><a>详情</a></td>
+</tr>
+
+
+
+</table>
+
+<br/><br/><br/>
+
+
+<form method="get" action="Updatemeetingtime" >
+<lable></lable>
+<input type="hidden" name="meetingtime" value="">
+<input type="hidden"  value="">
+<input type="hidden"  name ="repartment_name" value="">
+</form>
+
+
+
+
+
+</body>
+</html>
