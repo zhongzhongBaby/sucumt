@@ -8,15 +8,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {	
 				$.get("Showbumenxinxi",{} ,function(n){
-					
 					$("table tr:gt(0)").remove();//除了第一行都删了。\
 					var html = "";
 					for (var i=0; i < n.rows.length; i++) {
 						var r = n.rows[i];
 								html+="<tr>";
-								html+="<td>"+r.department_name+"</td>";
-								html+="<td>"+r.meetingtime+"</td>";
-								html+="	<td><a href=\"#\" class=\"xiugai\" >修改会议时间</a></td><td><a>详情</a></td>";
+								html+="<td>"+r.department_name+"</td><td>"+r.department_renshu+"</td>";
+								html+="<td>宋广龙"+i+"</td><td>顾金洋"+i+"</td><td>"+r.meetingtime+"</td>";
+								html+="	<td><a>详情</a></td>";
 								html+="</tr>"; 
 					}
 					$("table").append(html);
@@ -24,7 +23,7 @@
 					$(".xiugai").click(function(){
 						$("form lable").text($(this).parents("tr").find("td").eq(0).text()+"会议时间 ");
 						$("form input:eq(0)").attr("type","text");
-						$("form input:eq(0)").attr("value",$(this).parents("tr").find("td").eq(1).text());
+						$("form input:eq(0)").attr("value",$(this).parents("tr").find("td").eq(3).text());
 						$("form input:eq(1)").attr("type","submit");
 						$("form input:eq(1)").attr("value","修改 ");
 						$("form input:eq(2)").attr("value", $(this).parents("tr").find("td").eq(0).text());
@@ -42,14 +41,14 @@
 
 </head>
 <body>
-<h2 class="sub-header">部门信息显示</h2>
+<h2 class="sub-header">部门列表</h2>
 <hr>
 <div class="table-responsive">
 <table class="table table-striped">
     <tbody>
 <tr>
-<td>部门名</td></td>
-<td>会议时间</td><td>修改会议时间</td><td><a>详情</a></td>
+<td>部门名</td>
+<td>部门人数</td><td>分管主席</td><td>部长</td><td>会议时间</td></td><td><a>详情</a></td>
 </tr>
 </tbody>
 </table>

@@ -61,7 +61,6 @@ public class Addrepartment extends HttpServlet {
 		String filename = getFilename(part);
 		/*writeTo(path, filename, part);*/
 		part.write(ip+filename);
-		out.println(filename);
 		try {
 			Connection conn = eb.javaweb.DBUtil.getConnection();
 			PreparedStatement ptmt = conn.prepareStatement("insert into department (department_name,department_renshu,department_zhineng,state,shenqingcailiao) values(?,?,?,?,?)");
@@ -71,9 +70,8 @@ public class Addrepartment extends HttpServlet {
 			ptmt.setInt(4,0);
 			ptmt.setString(5,ip+filename);
 			ptmt.execute();
-			out.print("部门增加申请已经提交");
+			out.print("绛夊緟瀹℃牳");
 		}
-
 		catch (SQLException e) {
 			out.print(e);
 		}

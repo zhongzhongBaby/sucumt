@@ -15,14 +15,14 @@
 						var r = n.rows[i];
 								html+="<tr>";
 								html+="<td>"+r.department_name+"</td>";
-								html+="<td>"+r.meetingtime+"</td>";
-								html+="	<td><a href=\"#\" class=\"xiugai\" >修改会议时间</a></td><td><a>详情</a></td>";
+								html+="<td>"+r.department_renshu+"</td>";
+								html+="	<td><a href=\"#\" class=\"xiugai\" >修改人数上限</a></td><td><a>详情</a></td>";
 								html+="</tr>"; 
 					}
 					$("table").append(html);
 					
 					$(".xiugai").click(function(){
-						$("form lable").text($(this).parents("tr").find("td").eq(0).text()+"会议时间 ");
+						$("form lable").text($(this).parents("tr").find("td").eq(0).text()+"人数上限 ");
 						$("form input:eq(0)").attr("type","text");
 						$("form input:eq(0)").attr("value",$(this).parents("tr").find("td").eq(1).text());
 						$("form input:eq(1)").attr("type","submit");
@@ -49,24 +49,17 @@
     <tbody>
 <tr>
 <td>部门名</td></td>
-<td>会议时间</td><td>修改会议时间</td><td><a>详情</a></td>
+<td>部门人数</td><td>修改人数上限</td><td><a>详情</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 <br/><br/><br/>
-
-
 <form method="get" action="Updatemeetingtime" >
 <lable></lable>
 <input type="hidden" name="meetingtime" value="">
 <input type="hidden"  value="">
 <input type="hidden"  name ="repartment_name" value="">
 </form>
-
-
-
-
-
 </body>
 </html>
