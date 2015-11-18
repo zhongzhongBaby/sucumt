@@ -44,18 +44,16 @@ public class Showbill extends HttpServlet {
 			PreparedStatement ptmt = conn.prepareStatement("select * from bill");
 			ptmt.execute();
 			ResultSet rs = ptmt.executeQuery();
-			PreparedStatement stmt = conn.prepareStatement("select activity_name ,jingfeiyusuan from  activity where activity_id=?");
-			stmt.setInt(1, 1);	
-			ResultSet rrs = stmt.executeQuery();
-			
-			
 			
 			response.setContentType("text/x-json");
 			String j = "{\"rows\": [";
 			while (rs.next()) {
-
+				PreparedStatement stmt = conn.prepareStatement("select activity_name ,jingfeiyusuan from  activity where activity_id=?");
+				stmt.setInt(1,Integer.parseInt(rs.getString("activity_id")));	
+				ResultSet rrs = stmt.executeQuery();
 				j += "{";
 				j += "\"id\": \"" + rs.getString("activity_id") + "\",";
+				j += "\"baobiaoname\": \"" + rs.getString("baobiaoname") + "\",";
 				while (rrs.next()) {
 				j += "\"activity_name\": \"" + rrs.getString("activity_name") + "\",";
 				j += "\"jingfeiyusuan\": \"" + rrs.getString("jingfeiyusuan") + "\",";

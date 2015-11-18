@@ -47,10 +47,11 @@ public class Showactivitydetail extends HttpServlet {
 			response.setContentType("text/x-json");
 			String j = "{\"rows\": [";
 			while (rs.next()) {
-
 				j += "{";
 				j += "\"id\": \"" + rs.getString("activity_id") + "\",";
 				j += "\"activity_name\": \"" + rs.getString("activity_name") + "\",";
+				j += "\"yusuan\": \"" + rs.getString("jingfeiyusuan") + "\",";
+				j += "\"filename\": \"" + rs.getString("filename") + "\",";
 				j += "\"activity_addr\": \"" + rs.getString("activity_address") + "\"";
 				j += "}";
 				j += ", ";

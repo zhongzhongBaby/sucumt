@@ -18,13 +18,17 @@ $.get("Showactivitydetail",{activity_id:activity_id} ,function(n){
 	for (var i=0; i < n.rows.length; i++) {
 		var r = n.rows[i];
 		$("#name").text(r.activity_name);
+		$("#xiazai").attr("href","activityfile/"+r.filename);
 	}
 }); 
 });  
 </script>
 
+
+
 </head>
 <body>
+<p><a id="xiazai" href="#" >下载策划书</a></p>
 <h2 align="center">学生活动审批表<h2>
 <table border="1" cellspacing="0" width="80%">
 <tr>

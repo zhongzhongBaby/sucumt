@@ -1,6 +1,10 @@
 package gyzactivity;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import Tool.IpTimeStamp;
+
 /**
  * Servlet implementation class Addactivityask
  */
-@MultipartConfig(location = "G:\\")
+@MultipartConfig
 @WebServlet("/Addactivityask")
 
 public class Addactivityask extends HttpServlet {
@@ -38,34 +44,38 @@ public class Addactivityask extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+		String   name=request.getParameter("activityname");
+		String   date=request.getParameter("activitydate");
+		String   addr=request.getParameter("activityaddr");
+		String   chixushijian=request.getParameter("chixushijian");
+		String   zerenlaoshi=request.getParameter("zerenlaoshi");
+		String   laoshi_tel=request.getParameter("laoshi_tel");
+		String   yiyi=request.getParameter("yiyi");
+		String   zhubandanwei=request.getParameter("zhubandanwei");
+		int jingfeiyusuan=Integer.parseInt(request.getParameter("jingfeiyusuan"));
 		PrintWriter out=response.getWriter();
-		String path = getPath("/activityplan/");
-		/*System.out.println(path);*/
-		
-		
-		
-		
-			
-			
+		String path = getPath("/activityfile/");
+		System.out.println(path);
 		Part part = request.getPart("activityask");
 		String filename = getFilename(part);
-		/*writeTo(path, filename, part);*/
-		part.write(filename);
-		
-		
-		
-		
-		
-		
-		out.println(filename);
+		writeTo(path, filename, part);
 		try {
 			Connection conn = eb.javaweb.DBUtil.getConnection();
-			PreparedStatement ptmt = conn.prepareStatement("insert into activity (activity_name) values(?)");
-			ptmt.setString(1, "gaggagaga");
-						ptmt.execute();
-			out.print("�����Ѿ��ύ");
+			PreparedStatement ptmt = conn.prepareStatement("insert into activity (activity_name,state,yiyi,jiaoshi_tel,zerenlaoshi,zhubandanwei,jingfeiyusuan,activity_date,activity_address,filename,laststate) values(?,?,?,?,?,?,?,?,?,?,?)");
+			ptmt.setString(1,name);
+			ptmt.setInt(2,0);
+			ptmt.setString(3,yiyi);
+			ptmt.setString(4,laoshi_tel);
+			ptmt.setString(5,zerenlaoshi);
+			ptmt.setString(6,zhubandanwei);
+			ptmt.setInt(7,jingfeiyusuan);
+			ptmt.setString(8,date);
+			ptmt.setString(9,addr);
+			ptmt.setString(10,filename);
+			ptmt.setInt(11,0);
+			ptmt.execute();
+			out.print("申请已经提交,审核结果将在两个工作日内给出，请注意查看!");
 		}
-
 		catch (SQLException e) {
 			out.print(e);
 		}
@@ -75,11 +85,6 @@ public class Addactivityask extends HttpServlet {
 		
 		
 	}
-
-	
-	
-		
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -88,7 +93,6 @@ public class Addactivityask extends HttpServlet {
 		doGet(request,response);
 		}
 
-	
 	
 	private String getFilename(Part part) {
 		String header = part.getHeader("Content-Disposition");
@@ -105,7 +109,7 @@ public class Addactivityask extends HttpServlet {
 
 	
 	
-	/*private void writeTo(String path, String filename, Part part)
+	private void writeTo(String path, String filename, Part part)
 			throws IOException, FileNotFoundException {
 		InputStream in = part.getInputStream();
 		OutputStream out = new FileOutputStream(path + filename);
@@ -117,10 +121,11 @@ public class Addactivityask extends HttpServlet {
 		in.close();
 		out.close();
 	}
-	*/
+	
+	
 	public String getPath(String p){
 		return this.getServletContext().getRealPath(p);
 	}
-		
+
 
 	}

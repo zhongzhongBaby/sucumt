@@ -1,6 +1,10 @@
 package gyzactivity;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import Tool.IpTimeStamp;
+
 /**
  * Servlet implementation class Addbill
  */
-@MultipartConfig(location = "G:\\")
+@MultipartConfig
 @WebServlet("/Addbill")
 public class Addbill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,29 +44,26 @@ public class Addbill extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-	
 		Tool.IpTimeStamp buf = new IpTimeStamp ();
 		String ip=buf.getIPTimeRand();	
 		System.out.print(ip);
-		
-	/*Integer id= Integer.parseInt(request.getParameter("activity_id"));
-	Double zanzhu= Double.parseDouble(request.getParameter("zanzhu"));
-	Double zongzhichu= Double.parseDouble(request.getParameter("zongzhichu"));
-	*/
-	/*System.out.println(path);*/
+		String path = getPath("/file/");
 		Part part = request.getPart("baobiao");
 		String filename = getFilename(part);
-		/*writeTo(path, filename, part);*/
+		writeTo(path,ip+filename, part);
 		part.write(ip+filename);
-		out.println(filename);
+		Integer activityid=Integer.parseInt(request.getParameter("activityid"));
+		Integer zanzhu=Integer.parseInt(request.getParameter("zanzhu"));
+		Integer zongzhichu=Integer.parseInt(request.getParameter("zongzhichu"));
 		try {
 			Connection conn = eb.javaweb.DBUtil.getConnection();
-			PreparedStatement ptmt = conn.prepareStatement("insert into bill (activity_id,bill_pay,bill_zanzhu) values(?,?,?)");
-			ptmt.setInt(1, 1);
-			ptmt.setDouble(2,34 );
-			ptmt.setDouble(3,3434 );
+			PreparedStatement ptmt = conn.prepareStatement("insert into bill (activity_id,bill_pay,bill_zanzhu,baobiaoname) values(?,?,?,?)");
+			ptmt.setInt(1, activityid );
+			ptmt.setDouble(2,zongzhichu);
+			ptmt.setDouble(3,zanzhu);
+			ptmt.setString(4,ip+filename );
 						ptmt.execute();
-			out.print("�����Ѿ��ύ");
+			out.print("报表已经提交！");
 		}
 
 		catch (SQLException e) {
@@ -82,7 +85,37 @@ public class Addbill extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request,response);
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		Tool.IpTimeStamp buf = new IpTimeStamp ();
+		String ip=buf.getIPTimeRand();	
+		System.out.print(ip);
+		String path = getPath("/file/");
+		Part part = request.getPart("baobiao");
+		String filename = getFilename(part);
+		writeTo(path,ip+filename, part);
+		part.write(ip+filename);
+		Integer activityid=Integer.parseInt(request.getParameter("activityid"));
+		Integer zanzhu=Integer.parseInt(request.getParameter("zanzhu"));
+		Integer zongzhichu=Integer.parseInt(request.getParameter("zongzhichu"));
+		try {
+			Connection conn = eb.javaweb.DBUtil.getConnection();
+			PreparedStatement ptmt = conn.prepareStatement("insert into bill (activity_id,bill_pay,bill_zanzhu,baobiaoname) values(?,?,?,?)");
+			ptmt.setInt(1, activityid );
+			ptmt.setDouble(2,zongzhichu);
+			ptmt.setDouble(3,zanzhu);
+			ptmt.setString(4,ip+filename );
+						ptmt.execute();
+			out.print("报表已经提交！");
+		}
+
+		catch (SQLException e) {
+			out.print(e);
+		}
+
+				
+		
 		}
 
 	
@@ -106,7 +139,7 @@ public class Addbill extends HttpServlet {
 
 	
 	
-	/*private void writeTo(String path, String filename, Part part)
+	private void writeTo(String path, String filename, Part part)
 			throws IOException, FileNotFoundException {
 		InputStream in = part.getInputStream();
 		OutputStream out = new FileOutputStream(path + filename);
@@ -118,7 +151,7 @@ public class Addbill extends HttpServlet {
 		in.close();
 		out.close();
 	}
-	*/
+	
 	public String getPath(String p){
 		return this.getServletContext().getRealPath(p);
 	}

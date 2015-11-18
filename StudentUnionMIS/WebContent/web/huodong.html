@@ -14,52 +14,73 @@
   <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" style="margin-bottom:30px">
     <div class="masthead">
       <h1 class="text-muted">学生会办公室管理信息系统</h1>
     </div>
       <nav>
         <ul class="nav nav-justified">
           <li><a href="bumen.html">部门管理</a></li>          
-          <li><a href="renyuan.html">人员管理</a></li>          
-          <li class="active"><a href="huodong.html">活动管理</a></li>        
+          <li ><a href="renyuan.html">人员管理</a></li>          
+          <li class="active" ><a href="huodong.html">活动管理</a></li>    
           <li><a href="wupin.html">物品管理</a></li>          
           <li><a href="quanxian.html">权限管理</a></li>
         </ul>
       </nav>
   </div>
-<br/><br/>
+
+
   </div class="container-fluid">
-      <div class="col-sm-2 col-sm-offset-1 col-md-2 sidebar col-md-offset-1 col-xs-2 col-lg-2 ucc">
+      <div class="col-sm-2 col-sm-offset-1 col-md-2 sidebar col-md-offset-1 col-xs-2 col-lg-2 ucc" style="margin-left:80px">
         <ul class="nav nav-sidebar">
+          <li id="ask"><a href="#">活动申请</a></li>
           <li class="dropdown">
-            <a id="drop4" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">下拉1<b class="caret"></b></a>
+            <a id="drop4" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">活动审核 <b class="caret"></b></a>
             <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
-              <li><a href="#">A</a></li>
-              <li><a href="#">B</a></li>
-              <li><a href="#">C</a></li>
+              <li id="bangongshi"><a href="#">办公室审核</a></li>
+              <li id="tuanwei" ><a href="../tuanweishenhe.html" target="myframe">团委审核</a></li>
+              <li id="houqin"><a href="#">后勤审核</a></li>
+              <li><a href="#">保卫处审核</a></li>
+              <li><a href="#">体育委员会审核</a></li>
+                <li><a href="../showreasult.html" target="myframe" >查看审核结果</a></li>
             </ul>
           </li>
-          <li class="dropdown">
-            <a id="drop4" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">下拉2<b class="caret"></b></a>
+          <li id="jilu"><a href="#">活动记录</a></li>
+             <li class="dropdown">
+            <a id="drop4" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">活动总结 <b class="caret"></b></a>
             <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
-              <li><a href="#">a</a></li>
-              <li><a href="#">b</a></li>
-              <li><a href="#">c</a></li>
+              <li id="huodongzongjie"><a href="#">活动总结</a></li>
+              <li id="baobiaoadd" ><a href="#">报表提交</a></li>
             </ul>
           </li>
-          <li><a href="#">条目3</a></li>
-          <li><a href="#">条目4</a></li>
-          <li><a href="#">条目5</a></li>
-          <li><a href="#">条目6</a></li>
-          <li><a href="#">条目7</a></li>
+          <li id="baobiaoshehe" ><a href="../baobiaoshenpi.html" target="myframe" >报表审核</a></li>
         </ul>
       </div>
-
-      <div class="col-md-7 col-md-offset-4 col-sm-7 col-sm-offset-4 col-lg-7 col-sm-8 main uc2">
-        <iframe class="setin" src="../StudentUnionMIS/WebContent/ActivityAsk.html"> </iframe>
+      <div class="col-md-9 col-sm-9 col-lg-9 main uc4" style="margin-bottom:3em">
+        <iframe  name="myframe" id="frame" class="setin" src="../ActivityAsk.html"> </iframe>
       </div>
 
   <div>
+  <script>
+  
+  $("#ask").click(function(){
+	  $("#frame").attr("src","../ActivityAsk.html")
+  });
+  $("#bangongshi").click(function(){
+	  $("#frame").attr("src","../activityaskshow.html")
+  });
+  $("#tuanwei").click(function(){
+	  $("#frame").attr("src","../tuanweishenhe.html")
+  });
+ 
+  $("#baobiaoadd").click(function(){
+	  $("#frame").attr("src","../baobiaoadd.html")
+  });
+  $("#baobiaoshenhe").click(function(){
+	  $("#frame").attr("src","../baobiaoadd.html")
+  });
+  </script>
+  
+  
 </body>
 </html>

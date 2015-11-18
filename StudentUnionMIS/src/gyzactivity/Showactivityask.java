@@ -12,9 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
 /**
  * Servlet implementation class Showactivityask
  */
@@ -36,7 +33,6 @@ public class Showactivityask extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		
 		PrintWriter out=response.getWriter();
 		try {
 			response.setContentType("text/x-json;charset=utf-8");
@@ -44,21 +40,20 @@ public class Showactivityask extends HttpServlet {
 			PreparedStatement ptmt = conn.prepareStatement("select * from activity");
 			ptmt.execute();
 			ResultSet rs = ptmt.executeQuery();
-			
-			
 			response.setContentType("text/x-json");
 			String j = "{\"rows\": [";
 			while (rs.next()) {
-
 				j += "{";
 				j += "\"id\": \"" + rs.getString("activity_id") + "\",";
 				j += "\"activity_name\": \"" + rs.getString("activity_name") + "\",";
 				j += "\"activity_state\": \"" + rs.getString("state") + "\",";
+				j += "\"activitydate\": \"" + rs.getString("activity_date") + "\",";
+				j += "\"zhubandanwei\": \"" + rs.getString("zhubandanwei") + "\",";
+				j += "\"zerenlaoshi\": \"" + rs.getString("zerenlaoshi") + "\",";
 				j += "\"laststate\": \"" + rs.getString("laststate") + "\",";
 				j += "\"activity_addr\": \"" + rs.getString("activity_address") + "\"";
 				j += "}";
 				j += ", ";
-
 			}
 
 			if (j != "{\"rows\": [") {

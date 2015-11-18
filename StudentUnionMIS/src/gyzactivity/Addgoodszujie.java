@@ -54,7 +54,6 @@ public class Addgoodszujie extends HttpServlet {
 		String detail= request.getParameter("detail");
 		String Lend_danwei= request.getParameter("danwei");
 		Double money=Double.parseDouble(request.getParameter("lend_money"));
-		
 		Date date=new Date();
 		date=Strtodate(lend_date);
 		System.out.print(date);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript">
+	$(document).ready(function() {	
+						
+				$.get("Showactivityask",{} ,function(n){
+					$("table tr:gt(0)").remove();//除了第一行都删了。\
+					var html = "";
+					var state="办公室同意";
+					var laststate="";
+					var tongyi="";
+					for (var i=0; i < n.rows.length; i++) {
+						var r = n.rows[i];
+						if(r.laststate=="0"){
+							laststate="未审核 ";
+							tongyi="同意 ";
+						}else{
+							laststate="团委同意";
+							tongyi="";	
+						}
+						if(r.activity_state=="1"){
+						html+="<tr>";
+						html+="<td>"+r.activity_name+"</td><td>"+r.id+"</td><td>"+r.activity_name+"</td>";
+						html+="<td>主办单位</td><td>责任教师</td><td><a href=\"activitydetail.html?activity_id="+r.id+"\">详情<a></td><td>"+state+"</td><td>"+laststate+"</td>";
+						html+="</tr>";
+						}
+						
+					}
+					$("table").append(html);
+				}); 	
+				
+	});  
+
+</script>
+</head>
+<body>
+<h2 class="sub-header">活动审批</h2>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped">
+    <tbody>
+<tr>
+<td>活动名称</td><td>活动开始时间</td><td>活动地点</td>
+<td>主办单位</td><td>责任教师</td><td>详情</td><td>办公室审核状态</td><td>团委审核状态</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
