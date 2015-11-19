@@ -1,6 +1,6 @@
 package myServlet;
-
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
@@ -48,14 +48,14 @@ public class LoginServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		// ¶¨ÒåÒ»¸ö±íÊ¾Ìø×ªÒ³ÃæÃû³ÆµÄ±äÁ¿
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½×ªÒ³ï¿½ï¿½ï¿½ï¿½ï¿½ÆµÄ±ï¿½ï¿½ï¿½
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		// »ñÈ¡ÓÃ»§ÊäÈëµÄĞÅÏ¢
+		// ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		String auto = request.getParameter("auto");
-
+			PrintWriter out=response.getWriter();
 		String id = "";
 		String roleId="";
 		String departmentId="";
@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(mySql);
 		PackingDatabase select = new PackingDatabase();
 		try {
-			// Ö´ĞĞ²éÑ¯Óï¾ä
+			// Ö´ï¿½Ğ²ï¿½Ñ¯ï¿½ï¿½ï¿½
 			ResultSet rs = select.query(mySql);
 			if (rs.next()) {
 				id=rs.getString("user_id");
@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 				System.out.println(myQuery);
 				PackingDatabase pd = new PackingDatabase();
 				try {
-					// Ö´ĞĞ²éÑ¯Óï¾ä
+					// Ö´ï¿½Ğ²ï¿½Ñ¯ï¿½ï¿½ï¿½
 					ResultSet r = pd.query(myQuery);
 					int i=0;
 					while (r.next()) {
@@ -89,7 +89,7 @@ public class LoginServlet extends HttpServlet {
 					System.out.println(request.getSession().getAttribute("authority"));
 					r.close();
 				} catch (Exception ee) {
-					System.out.println("ÓÃ»§È¨ÏŞ¶ÁÈ¡Òì³£" + ee.getMessage());
+					System.out.println("ï¿½Ã»ï¿½È¨ï¿½Ş¶ï¿½È¡ï¿½ì³£" + ee.getMessage());
 				}
 				
 				HttpSession session = request.getSession();
@@ -99,23 +99,30 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("departmentId", departmentId);
 				session.setAttribute("logined", true);
 				session.setAttribute("authority", authority);
-				
-				if (auto != null) { // ¹´Ñ¡¼Ç×¡ÃÜÂë£¬±£´æcookie
+				if (auto != null) { // ï¿½ï¿½Ñ¡ï¿½ï¿½×¡ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½cookie
 					Cookie cookie = new Cookie("user", username);
 					cookie.setMaxAge(10 * 60);
 					response.addCookie(cookie);
-					System.out.print("cookieÒÑ´´½¨");
+					System.out.print("cookieï¿½Ñ´ï¿½ï¿½ï¿½");
 				}
 				// request.setAttribute("user", id);
+			
+			
+			response.sendRedirect("web/bumen.html");
+			
+			
+			}else{
+				out.print("<script>alert(\"å¯†ç ä¸æ­£ç¡®\")</script>");
+				response.sendRedirect("index.jsp");
 			}
 			rs.close();
 		} catch (Exception e) {
-			System.out.println("³öÏÖµÇÂ¼Òì³£" + e.getMessage());
+			System.out.println("ï¿½ï¿½ï¿½Öµï¿½Â¼ï¿½ì³£" + e.getMessage());
 		}
 
-		// ½«»ñÈ¡µÄĞÅÏ¢±£´æµ½ÓÃ»§User
+		// ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æµ½ï¿½Ã»ï¿½User
 		User user = new User(id, pwd, username,roleId);
-		// ½«¶ÔÏó±£´æµ½ÇëÇóÉÏÏÂÎÄÖĞ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ó±£´æµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		request.setAttribute("user", user);
 
 	}
