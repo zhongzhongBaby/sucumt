@@ -63,7 +63,7 @@ public class Addgoodszujie extends HttpServlet {
 		
 	try {
 			Connection conn = eb.javaweb.DBUtil.getConnection();
-			PreparedStatement ptmt = conn.prepareStatement("insert into lendgoods (detail,lend_date,return_date,state,lend_daiwei,lend_money) values(?,?,?,?,?,?)");
+			PreparedStatement ptmt = conn.prepareStatement("insert into lendgoods (detail,lend_date,return_date,state,lend_danwei,lend_money) values(?,?,?,?,?,?)");
 			ptmt.setString(1, detail);
 			ptmt.setString(2, lend_date);
 			ptmt.setString(3, lend_date);
@@ -71,7 +71,7 @@ public class Addgoodszujie extends HttpServlet {
 			ptmt.setString(5,Lend_danwei);
 			ptmt.setDouble(6,money);
 			ptmt.execute();
-			out.print("ÉêÇëÒÑ¾­Ìá½»");
+			out.print("ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½á½»");
 		}
 
 		catch (SQLException e) {
