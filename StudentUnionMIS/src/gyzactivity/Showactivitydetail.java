@@ -52,6 +52,12 @@ public class Showactivitydetail extends HttpServlet {
 				j += "\"activity_name\": \"" + rs.getString("activity_name") + "\",";
 				j += "\"yusuan\": \"" + rs.getString("jingfeiyusuan") + "\",";
 				j += "\"filename\": \"" + rs.getString("filename") + "\",";
+				j += "\"activity_date\": \"" + rs.getString("activity_date") + "\",";
+				j += "\"zhubandanwei\": \"" + rs.getString("zhubandanwei") + "\",";
+				j += "\"zerenjiaoshi\": \"" + rs.getString("zerenlaoshi") + "\",";
+				j += "\"jiaoshi_tel\": \"" + rs.getString("jiaoshi_tel") + "\",";
+				j += "\"state\": \"" + rs.getString("state") + "\",";
+				j += "\"laststate\": \"" + rs.getString("laststate") + "\",";
 				j += "\"activity_addr\": \"" + rs.getString("activity_address") + "\"";
 				j += "}";
 				j += ", ";
