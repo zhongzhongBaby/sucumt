@@ -3,10 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>添加成员信息</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<h2 class="sub-header">添加成员</h2>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped">
+    <tbody>
 	<form action="AddMember" method="post">
-		<table align="center">
+		
 			<tr align="center">
 				<td align="right">姓名：</td>
 				<td align="left"><input type="text" size="19" name="memName"></td>
@@ -107,7 +113,9 @@
 					<input type="reset" value="取消">
 				</td>
 			</tr>
-		</table>
 	</form>
+	</tbody>
+	</table>
+	</div>
 </body>
 </html>

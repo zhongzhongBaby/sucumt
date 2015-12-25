@@ -1,27 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
-</head>
-<body>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-<h1>部门增加</h1>
+<h2 class="sub-header">部门增加</h2>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped">
+    <tbody>
 <form method="post" action="Addrepartment"   enctype="multipart/form-data" >
-部门名<input type="text" name="department_name"><br/>
-部门人数<input type="text" name="department_renshu"><br/>
-部门职能简介<input type="text" name="department_zhineng"><br/>
-上传申请材料：<input type="file" name="cailiao">
-<input type="submit" value="申请"><br/>
+<tr><td>部门名</td><td><input type="text" name="department_name"></td></tr>
+<tr><td>部门人数</td><td><input type="text" name="department_renshu"></td></tr>
+<tr><td>部门职能简介</td><td><input type="text" name="department_zhineng"></td></tr>
+<tr><td>上传申请材料</td><td><input type="file" name="cailiao"></td></tr>
+<tr><td></td><td><input type="submit" value="申请"></td></tr>
 </form>
-</body>
-</html>
+</tbody>
+</table>
+</div>
 </body>
 </html>
