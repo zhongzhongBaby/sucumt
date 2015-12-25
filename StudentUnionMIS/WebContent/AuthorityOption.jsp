@@ -9,20 +9,36 @@
 <title>用户权限设置</title>
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
-$(document).ready(
-		function(){
-			 $("select[id='role']").change(
-					function(){
-						 var roleId=$(".selector").val(); 
-						 $("form[name='myForm']").attr("action","AuthorityOption?roleId="+roleId);
-						 $("input[type='checkbox']").removeAttr("checked"); 
-						 $.getJSON("AuthorityQuery?roleId="+roleId, function(jsonData) {
-							for (var i = 0; i < jsonData.length; i++){
-									$("input[value='"+jsonData[i].authorityId+"']").prop('checked',"checked");	
-							}
-						}); 
-					}); 
-		});	
+	$(document)
+			.ready(
+					function() {
+						$("select[id='role']")
+								.change(
+										function() {
+											var roleId = $(".selector").val();
+											$("form[name='myForm']").attr(
+													"action",
+													"AuthorityOption?roleId="
+															+ roleId);
+											$("input[type='checkbox']")
+													.removeAttr("checked");
+											$
+													.getJSON(
+															"AuthorityQuery?roleId="
+																	+ roleId,
+															function(jsonData) {
+																for (var i = 0; i < jsonData.length; i++) {
+																	$(
+																			"input[value='"
+																					+ jsonData[i].authorityId
+																					+ "']")
+																			.prop(
+																					'checked',
+																					"checked");
+																}
+															});
+										});
+					});
 </script>
 </head>
 <body>
@@ -59,43 +75,44 @@ $(document).ready(
 				</select></td>
 			</tr>
 			<%
-							String query1 = "select distinct authority_class,class_eng from authority ";
-							PackingDatabase pd1 = new PackingDatabase();
-							String AuthorityClass;
-							try {
-								// 执行查询方法
-								ResultSet rs = pd1.query(query1);
-								while (rs.next()) {
-									AuthorityClass=rs.getString("authority_class");
+				String query1 = "select distinct authority_class,class_eng from authority ";
+				PackingDatabase pd1 = new PackingDatabase();
+				String AuthorityClass;
+				try {
+					// 执行查询方法
+					ResultSet rs = pd1.query(query1);
+					while (rs.next()) {
+						AuthorityClass = rs.getString("authority_class");
 			%>
 			<tr>
-				<td colspan="2"><%=AuthorityClass %>：</td>
+				<td colspan="2"><%=AuthorityClass%>：</td>
 			</tr>
 			<%
-									String query2 = "select distinct authority_detail,authority_id from authority where authority_class='"+AuthorityClass+"'";				
-									PackingDatabase pd2 = new PackingDatabase();
-									try {
-										// 执行查询方法
-										ResultSet r = pd2.query(query2);
-										while (r.next()) {
+				String query2 = "select distinct authority_detail,authority_id from authority where authority_class='"
+								+ AuthorityClass + "'";
+						PackingDatabase pd2 = new PackingDatabase();
+						try {
+							// 执行查询方法
+							ResultSet r = pd2.query(query2);
+							while (r.next()) {
 			%>
 			<tr>
 				<td></td>
 				<td><input type="checkbox"
-					name="<%=rs.getString("class_eng") %>"
+					name="<%=rs.getString("class_eng")%>"
 					value="<%=r.getString("authority_id")%>">&nbsp;<%=r.getString("authority_detail")%>
 				</td>
 			</tr>
-			<%	
-										}
-									} catch (Exception e) {
-										System.out.println("查询权限详情时出现异常：" + e.getMessage());
-									}			
-								}
-							} catch (Exception e) {
-								System.out.println("查询权限目录时出现异常：" + e.getMessage());
-							}
-						%>
+			<%
+				}
+						} catch (Exception e) {
+							System.out.println("查询权限详情时出现异常：" + e.getMessage());
+						}
+					}
+				} catch (Exception e) {
+					System.out.println("查询权限目录时出现异常：" + e.getMessage());
+				}
+			%>
 		</table>
 		<center>
 			<p>
