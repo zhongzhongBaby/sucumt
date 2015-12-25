@@ -55,3 +55,32 @@ background: url(../images/img6.jpg) no-repeat 0px 0px;
 .zhong2{
   font-size: 4em;
 }
+.ucc{
+  /* margin-top: 100px; */
+  background-color: #dcdcdc;
+}
+.uc1{
+  border: 10px solid #FF0000;
+  border-radius: 30px;
+}
+.uc2{
+  border: 10px solid #FF4500;
+  border-radius: 30px;
+}
+.uc3{
+  border: 10px solid #FFD700;
+  border-radius: 30px;
+}
+.uc4{
+  /* border: 1px solid #008000; */
+  /* border-radius: 30px; */
+}
+.uc5{
+  border: 10px solid #0000FF;
+  border-radius: 30px;
+}
+.setin{
+  margin: 0 0;
+  width: 100%;
+  height: 480px;
+}

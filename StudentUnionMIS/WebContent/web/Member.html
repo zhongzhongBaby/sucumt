@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Window-target" content="_top">
+  <title>人员管理</title>
+  <link rel="stylesheet" href="css/justified-nav.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/yeah.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container" style="margin-bottom:30px">
+    <div class="masthead">
+      <h1 class="text-muted">学生会办公室管理信息系统</h1>
+    </div>
+      <nav>
+        <ul class="nav nav-justified">
+          <li><a href="bumen.html">部门管理</a></li>          
+          <li class="active"><a href="Member.html">人员管理</a></li>          
+          <li><a href="huodong.html">活动管理</a></li>        
+          <li><a href="wupin.html">物品管理</a></li>          
+          <li><a href="Authority.html">权限管理</a></li>
+        </ul>
+      </nav>
+  </div>
+
+
+  <div class="container-fluid">
+      <div class="col-sm-2 col-sm-offset-1 col-md-2 sidebar col-md-offset-1 col-xs-2 col-lg-2 ucc" style="margin-left:80px">
+        <ul class="nav nav-sidebar">
+          <li><a href="../memberView.html" target="member">成员浏览</a></li>
+          <li><a href="../AddMembers.html" target="member">添加成员</a></li>
+          <li><a href="../RemoveMember.html" target="member">退部处理</a></li>
+          <li><a href="../DeptStar.jsp" target="member">部门之星</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-9 col-sm-9 col-lg-9 main uc4" style="margin-bottom:3em">
+        <iframe class="setin" src="../memberView.html" name="member"> </iframe>
+      </div>
+
+  </div>
+</body>
+</html>
