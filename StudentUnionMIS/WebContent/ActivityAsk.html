@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>activityask</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>activityask</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<p>活动申请</p>
-<hr size="3">
-<form method="post" action="Addactivityask" enctype="multipart/form-data"      >
-活动名称<input type="text" name="activityname"><br />
-活动时间<input type="text"><br />
-申请活动地点<input type="text"><br />
-主办单位<input type="text"><br />
-经费预算<input type="text"><br />
-责任教师<input type="text"><br />
-教师联系电话<input type="text"><br />
-活动目的意义及形式<textarea></textarea><br />
-学院分团委或团体部门意见<input type="text"><br />
-校团委审批意见<input type="text"><br />
-保卫处审批意见<input type="text"><br />
-后勤管理审批意见<input type="text"><br />
-<input type="submit" value="提交活动申请"><br />
-添加活动策划附件
-<input type="file" name="activityask">
+<h2 class="sub-header">活动申请</h2>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped">
+    <tbody>
+<form method="post" action="Addactivityask" enctype="multipart/form-data">
+<tr><td>活动名称</td><td><input type="text" name="activityname"></td></tr>
+<tr><td>活动时间</td><td><input type="text"></td></tr>
+<tr><td>申请活动地点</td><td><input type="text"></td></tr>
+<tr><td>主办单位</td><td><input type="text"></td></tr>
+<tr><td>经费预算</td><td><input type="text"></td></tr>
+<tr><td>责任教师</td><td><input type="text"></td></tr>
+<tr><td>教师联系电话</td><td><input type="text"></td></tr>
+<tr><td>活动目的意义及形式</td><td><textarea></textarea></td></tr>
+<tr><td>学院分团委或团体部门意见</td><td><input type="text"></td></tr>
+<tr><td>校团委审批意见</td><td><input type="text"></td></tr>
+<tr><td>保卫处审批意见</td><td><input type="text"></td></tr>
+<tr><td>后勤管理审批意见</td><td><input type="text"></td></tr>
+<tr><td>添加活动策划附件</td><td><input type="file" name="activityask"></td></tr>
+<tr><td></td><td><input type="submit" value="提交活动申请"></td></tr>
 </form>
+</tbody>
+</table>
+</div>
 </body>
 </html>

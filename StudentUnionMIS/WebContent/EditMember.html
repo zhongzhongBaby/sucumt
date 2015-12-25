@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>修改成员信息</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -39,8 +40,12 @@
 </script>
 </head>
 <body>
+<h2 class="sub-header">修改成员信息</h2>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped">
+    <tbody>
 	<form action="" method="post" name="myForm">
-		<table align="center">
 			<tr align="center">
 				<td align="right">姓名：</td>
 				<td align="left"><input type="text" size="19" name="memName"></td>
@@ -121,7 +126,9 @@
 				<td colspan="2" align="center"><input type="submit" value="确认">
 					&emsp; <input type="reset" value="取消"></td>
 			</tr>
-		</table>
 	</form>
+	</tbody>
+	</table>
+	</div>
 </body>
 </html>
