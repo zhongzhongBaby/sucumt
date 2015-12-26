@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 
- <script>
+<script>
  $(document).ready(function() {	
 	 var url = location.href;
 	　　//获取pid的参数值
@@ -28,22 +28,31 @@ $.get("Showactivitydetail",{activity_id:activity_id} ,function(n){
 
 </head>
 <body>
-<p><a id="xiazai" href="#" >下载策划书</a></p>
-<h2 align="center">学生活动审批表<h2>
-<table border="1" cellspacing="0" width="80%">
-<tr>
-<td rowspan="3" width="35px">学生策划活动组织情况</td>
-<td>活动名称</td><td id="name" colspan="3"></td>
-</tr>
-<tr>
-<td>活动时间</td><td width="200px"></td><td>申请活动地点</td><td width="200px"></td>
-</tr>
-<tr>
+	<p>
+		<a id="xiazai" href="#">下载策划书</a>
+	</p>
+	<h2 align="center">学生活动审批表</h2>
+	<table border="1" cellspacing="0" width="80%">
+		<tr>
+			<td rowspan="3" width="35px">学生策划活动组织情况</td>
+			<td>活动名称</td>
+			<td id="name" colspan="3"></td>
+		</tr>
+		<tr>
+			<td>活动时间</td>
+			<td width="200px"></td>
+			<td>申请活动地点</td>
+			<td width="200px"></td>
+		</tr>
+		<tr>
 
-<td>主办单位</td><td></td><td>经费预算</td><td></td>
+			<td>主办单位</td>
+			<td></td>
+			<td>经费预算</td>
+			<td></td>
 
-</tr>
-</table>
+		</tr>
+	</table>
 
 
 

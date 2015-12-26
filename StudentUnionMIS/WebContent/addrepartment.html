@@ -8,20 +8,36 @@
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-<h2 class="sub-header">部门增加</h2>
-<hr>
-<div class="table-responsive">
-<table class="table table-striped">
-    <tbody>
-<form method="post" action="Addrepartment"   enctype="multipart/form-data" >
-<tr><td>部门名</td><td><input type="text" name="department_name"></td></tr>
-<tr><td>部门人数</td><td><input type="text" name="department_renshu"></td></tr>
-<tr><td>部门职能简介</td><td><input type="text" name="department_zhineng"></td></tr>
-<tr><td>上传申请材料</td><td><input type="file" name="cailiao"></td></tr>
-<tr><td></td><td><input type="submit" value="申请"></td></tr>
-</form>
-</tbody>
-</table>
-</div>
+	<h2 class="sub-header">部门增加</h2>
+	<hr>
+	<div class="table-responsive">
+		<form method="post" action="Addrepartment"
+			enctype="multipart/form-data">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td>部门名</td>
+						<td><input type="text" name="department_name"></td>
+					</tr>
+					<tr>
+						<td>部门人数</td>
+						<td><input type="text" name="department_renshu"></td>
+					</tr>
+					<tr>
+						<td>部门职能简介</td>
+						<td><input type="text" name="department_zhineng"></td>
+					</tr>
+					<tr>
+						<td>上传申请材料</td>
+						<td><input type="file" name="cailiao"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="申请"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

@@ -7,58 +7,69 @@
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function() {	
-						
-				$.get("Showgoodszujie",{} ,function(n){
-					
+	$(document).ready(
+			function() {
+
+				$.get("Showgoodszujie", {}, function(n) {
+
 					$("table tr:gt(0)").remove();//除了第一行都删了。\
 					var html = "";
 					var state = "";
 					var queren = "";
-					var returntime="";
-					for (var i=0; i < n.rows.length; i++) {
+					var returntime = "";
+					for (var i = 0; i < n.rows.length; i++) {
 						var r = n.rows[i];
-						
-						if(r.state=="0"){
-							state="未归还  ";
-							queren="确认归还  ";
-							returntime="";
-						}else{
-							state="已归还 ";
-							queren="";
-							returntime=r.returntime;
-						} 
-						 html+="<tr>";
-						 html+="<td>"+r.detail+"</td></td><td>"+r.lend_danwei+"</td>";
-						html+="<td>"+r.lend_date+"</td><td>"+r.return_date+"</td>";
-							 html+=" <td>"+r.lend_money+"</td><td>"+state+"</td><td><a href=\"Updatelendgoods?lend_id="+r.lend_id+"\">"+queren+"</a></td><td>"+returntime+"</td>";
-								 html+="</tr>";
-						
-							/* html+="<tr>";
-							html+="<td>"+r.detail+"</td></td><td>"+r.lend_danwei+"</td>";
-							html+="<td>"+r.lend_date+"</td><td>"+r.return_date+"</td><td>""</td><td>"+state+"</td><td>"+queren+"</td><td>归还时间</td>";
-							html+="</tr>"; */
+
+						if (r.state == "0") {
+							state = "未归还  ";
+							queren = "确认归还  ";
+							returntime = "";
+						} else {
+							state = "已归还 ";
+							queren = "";
+							returntime = r.returntime;
+						}
+						html += "<tr>";
+						html += "<td>" + r.detail + "</td></td><td>"
+								+ r.lend_danwei + "</td>";
+						html += "<td>" + r.lend_date + "</td><td>"
+								+ r.return_date + "</td>";
+						html += " <td>" + r.lend_money + "</td><td>" + state
+								+ "</td><td><a href=\"Updatelendgoods?lend_id="
+								+ r.lend_id + "\">" + queren + "</a></td><td>"
+								+ returntime + "</td>";
+						html += "</tr>";
+
+						/* html+="<tr>";
+						html+="<td>"+r.detail+"</td></td><td>"+r.lend_danwei+"</td>";
+						html+="<td>"+r.lend_date+"</td><td>"+r.return_date+"</td><td>""</td><td>"+state+"</td><td>"+queren+"</td><td>归还时间</td>";
+						html+="</tr>"; */
 
 					}
 					$("table").append(html);
-				}); 	
-				
-	});  
+				});
 
+			});
 </script>
 </head>
 <body>
-<h2 class="sub-header">物品租借显示</h2>
-<hr>
-<div class="table-responsive">
-<table class="table table-striped">
-    <tbody>
-<tr>
-<td>租借详情</td></td><td>租借单位</td>
-<td>借出时间</td><td>应还时间</td><td>押金</td><td>是否归还</td><td>确认归还</td><td>归还时间</td>
-</tr>
-</tbody>
-</table>
-</div>
+	<h2 class="sub-header">物品租借显示</h2>
+	<hr>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td>租借详情</td>
+					<td>租借单位</td>
+					<td>借出时间</td>
+					<td>应还时间</td>
+					<td>押金</td>
+					<td>是否归还</td>
+					<td>确认归还</td>
+					<td>归还时间</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

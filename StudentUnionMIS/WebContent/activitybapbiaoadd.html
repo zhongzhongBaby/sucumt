@@ -19,21 +19,39 @@ $("button").click(function(){
 </script> -->
 </head>
 <body>
-<h2 class="sub-header">活动报账</h2>
-<hr>
-<div class="table-responsive">
-<table class="table table-striped">
-    <tbody>
-<form method="post" action="Addbill" enctype="multipart/form-data"        >
-<tr><td>活动名称</td><td><input type="text"></td></tr>
-<tr><td>活动经费预算</td><td><input type="text" name="yusuan"></td></tr>
-<tr><td>活动总费用</td><td><input type="text" name="zongzhichu"></td></tr>
-<tr><td>活动赞助总费用</td><td><input type="text" name="zanzhu"></td></tr>
-<tr><td>上传excel报表</td><td><input type="file" name="baobiao"></td></tr>
-<tr><td></td><td><input type="submit" value="提交报表"></td></tr>
-</form>
-</tbody>
-</table>
-</div>
+	<h2 class="sub-header">活动报账</h2>
+	<hr>
+	<div class="table-responsive">
+		<form method="post" action="Addbill" enctype="multipart/form-data">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td>活动名称</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>活动经费预算</td>
+						<td><input type="text" name="yusuan"></td>
+					</tr>
+					<tr>
+						<td>活动总费用</td>
+						<td><input type="text" name="zongzhichu"></td>
+					</tr>
+					<tr>
+						<td>活动赞助总费用</td>
+						<td><input type="text" name="zanzhu"></td>
+					</tr>
+					<tr>
+						<td>上传excel报表</td>
+						<td><input type="file" name="baobiao"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="提交报表"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

@@ -2,38 +2,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h2 class="sub-header">物品租借</h2>
-<hr>
-<div class="table-responsive">
-<table class="table table-striped">
-    <tbody>
-<form method="post" action="Addgoodszujie">
-<tr><td>详情</td><td><textarea name="detail"></textarea></td></tr>
-<tr><td>租借单位</td><td><input type="text" name="lend_daiwei"></td></tr>
-<tr><td>租借时间</td><td><input type="text" name="lend_date"></td></tr>
-<tr><td>归还时间</td><td><input type="text" name=" return_date"></td></tr>
-<tr><td>押金</td><td><input type="text" name="lend_money"><span>&nbsp;（单位：元）</span></td></tr>
-<tr><td></td><td><input type="submit" value="登记"></td></tr>
-</form>
-</tbody>
-</table>
-</div>
-</body>
-</html>
+	<h2 class="sub-header">物品租借</h2>
+	<hr>
+	<div class="table-responsive">
+		<form method="post" action="Addgoodszujie">
+			<table class="table table-striped">
+				<tbody>
 
+					<tr>
+						<td>详情</td>
+						<td><textarea name="detail"></textarea></td>
+					</tr>
+					<tr>
+						<td>租借单位</td>
+						<td><input type="text" name="lend_daiwei"></td>
+					</tr>
+					<tr>
+						<td>租借时间</td>
+						<td><input type="text" name="lend_date"></td>
+					</tr>
+					<tr>
+						<td>归还时间</td>
+						<td><input type="text" name=" return_date"></td>
+					</tr>
+					<tr>
+						<td>押金</td>
+						<td><input type="text" name="lend_money"><span>&nbsp;（单位：元）</span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="登记"></td>
+					</tr>
 
-
+				</tbody>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
