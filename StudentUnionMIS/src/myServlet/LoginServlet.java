@@ -43,6 +43,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -58,6 +59,7 @@ public class LoginServlet extends HttpServlet {
 		String id = "";
 		String roleId="";
 		String departmentId="";
+		String[] authority = new String[30];
 		String mySql = "select * from userlist where user_name='" + username
 				+ "' and password='" + pwd + "'";
 		System.out.println(mySql);
@@ -73,12 +75,31 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("roleId="+roleId);
 				System.out.println("departmentId="+departmentId);
 				
+				String myQuery = "select * from roleAuthority where role_id='"+roleId+"'";
+				System.out.println(myQuery);
+				PackingDatabase pd = new PackingDatabase();
+				try {
+					// 执行查询语句
+					ResultSet r = pd.query(myQuery);
+					int i=0;
+					while (r.next()) {
+						authority[i]=r.getString("authority_id");
+						i++;
+					}
+					System.out.println(request.getSession().getAttribute("authority"));
+					r.close();
+				} catch (Exception ee) {
+					System.out.println("用户权限读取异常" + ee.getMessage());
+				}
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("userId", id);
+				session.setAttribute("userName", username);
 				session.setAttribute("roleId", roleId);
 				session.setAttribute("departmentId", departmentId);
 				session.setAttribute("logined", true);
-
+				session.setAttribute("authority", authority);
+				
 				if (auto != null) { // 勾选记住密码，保存cookie
 					Cookie cookie = new Cookie("user", username);
 					cookie.setMaxAge(10 * 60);

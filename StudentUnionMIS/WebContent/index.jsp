@@ -45,7 +45,7 @@ tr>td {
 			<div class="container" style="margin-right: 2em">
 				<div class="header-top-top" style="padding: 0">
 					<div class=" header-top-right" style="width: auto">
-						<a href="login.jsp"
+						<a href="#" id="login"
 							style="color: #fff; font-weight: 400; text-align: right;">您好，请登录</a>
 						<div class="clearfix"></div>
 					</div>
@@ -67,32 +67,32 @@ tr>td {
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<%
 						String username = "";
-						String password = "";
-						Cookie[] cookies = request.getCookies();
-						if (cookies != null) {
-							for (Cookie cookie : cookies) {
-								String name = cookie.getName();
-								String value = cookie.getValue();
+									String password = "";
+									Cookie[] cookies = request.getCookies();
+									if (cookies != null) {
+										for (Cookie cookie : cookies) {
+											String name = cookie.getName();
+											String value = cookie.getValue();
 
-								System.out.println(value);
-								String mySql = "select user_name,password from userlist where user_name='"
-										+ value + "'";
-								System.out.println(mySql);
-								PackingDatabase select = new PackingDatabase();
-								try {
-									// 执行查询语句
-									ResultSet rs = select.query(mySql);
-									if (rs.next()) {
-										username = value;
-										password = rs.getString("password");
-										break;
+											System.out.println(value);
+											String mySql = "select user_name,password from userlist where user_name='"
+													+ value + "'";
+											System.out.println(mySql);
+											PackingDatabase select = new PackingDatabase();
+											try {
+												// 执行查询语句
+												ResultSet rs = select.query(mySql);
+												if (rs.next()) {
+													username = value;
+													password = rs.getString("password");
+													break;
+												}
+												rs.close();
+											} catch (Exception e) {
+												System.out.println("SQL查询异常" + e.getMessage());
+											}
+										}
 									}
-									rs.close();
-								} catch (Exception e) {
-									System.out.println("SQL查询异常" + e.getMessage());
-								}
-							}
-						}
 					%>
 					<div class="table-responsive">
 						<form action="LoginServlet" method="post" name="myForm">
@@ -104,8 +104,9 @@ tr>td {
 										<td></td>
 									</tr>
 									<tr>
-										<td align="right" ><font color="white">账号：</font>&emsp;<input
-											type="text" name="username" size="19em" value="<%=username%>" /></td>
+										<td align="right"><font color="white">账号：</font>&emsp;<input
+											id="username" type="text" name="username" size="19em"
+											value="<%=username%>" /></td>
 										<td align="left">&emsp;<a href="" style="color: white;">立即注册</a></td>
 									</tr>
 									<tr>
@@ -149,5 +150,12 @@ tr>td {
 		</div>
 		<div class="clearfix" style="height: auto"></div>
 	</div>
+
+
+	<script>
+		$("#login").click(function() {
+			$("#username").focus();
+		})
+	</script>
 </body>
 </html>

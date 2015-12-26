@@ -9,6 +9,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>部门之星</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(
+			function() {
+				$.getJSON("../AuthorityJson",	function(jsonData) {
+					for(var key in jsonData){
+						/*  if(jsonData[key]=="23"){
+							$("a[id='bb']").attr("onclick","myForm.submit()");	 
+						}  */
+						alert(jsonData[key]);
+					}		
+				});
+			});
+  </script>
 </head>
 <body>
 	<h2 class="sub-header" style="padding-left: 1em">部门之星列表</h2>
@@ -22,6 +37,7 @@
 				</tr>
 				<tr>
 					<%
+						String[] data=(String[])request.getSession().getAttribute("authority");
 						String deptId = (String) request.getSession().getAttribute(
 								"departmentId");
 						String mySql = "select * from dept_star,member where member.member_id=dept_star.member_id and dept_star.department_id='"
@@ -76,7 +92,7 @@
 								}
 							%>
 					</select></td>
-					<td align="center"><a onclick="myForm.submit()">提交</a></td>
+					<td align="center"><a onclick="alert(&quot;您没有此权限&quot;);" id="bb">提交</a></td>
 				</tr>
 			</table>
 		</form>

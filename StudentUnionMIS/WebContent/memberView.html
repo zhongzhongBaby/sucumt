@@ -6,12 +6,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$
-								.getJSON(
-										"MemberQuery",
+	$(document).ready(
+			function() {
+						$.getJSON("MemberQuery",
 										function(jsonData) {
 											var html = "";
 											var html1 = "";
@@ -88,6 +85,25 @@
 										});
 					});
 </script>
+<script type="text/javascript">
+  $(document).ready(
+			function() {
+				$.getJSON("../AuthorityJson",	function(jsonData) {
+					for(var key in jsonData){
+						if(jsonData[key]=="1"){
+							$("a[id='bb']").attr("href","../AddMembers.html");	
+							$("a[id='bb']").attr("target","myframe");
+							$("a[id='bb']").removeAttr("onclick");	
+						}
+						if(jsonData[key]=="3"){
+							$("a[id='cc']").attr("href","../RemoveMember.html");	
+							$("a[id='cc']").attr("target","myframe");	
+							$("a[id='cc']").removeAttr("onclick");	
+						}
+					}		
+				});
+			});
+  </script>
 </head>
 <body>
 	<h2 class="sub-header" style="padding-left: 1em">人员管理</h2>
@@ -134,8 +150,7 @@
 					<td align="center">生日</td>
 					<td align="center">宿舍</td>
 					<td align="center">电话</td>
-					<td></td>
-					<td></td>
+
 				</tr>
 			</tbody>
 		</table>

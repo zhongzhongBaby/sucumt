@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript">
+	$(document).ready(function() {	
+						
+				$.get("Showmeetingcheck",{} ,function(n){
+					$("tbody tr:gt(0)").remove();//除了第一行都删了。\
+					var html = "";
+					for (var i=0; i < n.rows.length; i++) {
+						var r = n.rows[i];
+						html+="<tr>";
+						html+="<td>"+r.meeting_date+"</td><td>"+r.meeting_department+"</td><td>"+r.meeting_theme+"</td>";
+						html+="<td>"+r.yingdao+"</td><td>"+r.shidao+"</td><td>"+r.qingjia+"</td><td>"+r.absent+"</td>";
+						html+="</tr>";
+					}
+					$("tbody").append(html);
+				}); 	
+				
+	});  
+</script> 
+</head>
+<body>
+<h2 class="sub-header">部门绩效公示</h2>
+<hr>
+<div class="table-responsive">
+<table class="table table-striped">
+<tbody>
+<tr>
+<td>考勤时间</td><td>部门</td><td>会议主题</td>
+<td>应到人数</td><td>实到人数</td><td>请假人数</td><td>缺勤人数</td>
+</tr>
+
+
+
+</tbody>
+</table>
+</div>
+
+<body>
+
+
+</html>
