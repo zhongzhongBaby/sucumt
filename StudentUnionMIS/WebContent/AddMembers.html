@@ -3,111 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <title>添加成员信息</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<form action="AddMember" method="post">
-		<table align="center">
-			<tr align="center">
-				<td align="right">姓名：</td>
-				<td align="left"><input type="text" size="19" name="memName"></td>
-			</tr>
-			<tr align="center">
-				<td align="right">学院：</td>
-				<td align="left">
-					<select id="school" name="school" >
-						<option value="矿业学院">矿业学院</option>
-						<option value="安全学院">安全学院</option>	
-						<option value="力建学院">力建学院</option>	
-						<option value="信电学院">信电学院</option>
-						<option value="电力学院">电力学院</option>
-						<option value="化工学院">化工学院</option>	
-						<option value="机电学院">机电学院</option>	
-						<option value="环测学院">环测学院</option>
-						<option value="材料学院">材料学院</option>
-						<option value="资源学院">资源学院</option>	
-						<option value="管理学院">管理学院</option>	
-						<option value="计算机学院">计算机学院</option>	
-					</select>
-				</td>
-			</tr>
-			<tr align="center">
-				<td align="right">职位：</td>
-				<td align="left">
-					<input type="radio" name="role" value="2">部长&emsp;
-					<input type="radio" name="role" value="5">副部长&emsp;
-					<input type="radio" name="role" value="3">干事
-				</td>
-			</tr>
-			<tr align="center">
-				<td align="right">籍贯：</td>
-				<td align="left"><input type="text" size="19" name="hometown"></td>
-			</tr>
-			<tr align="center">
-				<td align="right">性别：</td>
-				<td align="left">
-					<input type="radio" name="sex" value="男">男&emsp;&emsp;
-					<input type="radio" name="sex" value="女">女
-				</td>
-			</tr>
-			<tr align="center">
-				<td align="right">出生日期：</td>
-				<td align="left">
-					<select id="year" name="year" >
-						<option value="1995">1995</option>
-						<option value="1996">1996</option>
-						<option value="1997">1997</option>
-					</select>&thinsp;年&ensp;
-					<select id="month" name="month" >
-						<option value="01">01</option>
-						<option value="02">02</option>
-						<option value="03">03</option>
-					</select>&thinsp;月&ensp;
-					<select id="day" name="day" >
-						<option value="12">12</option>
-						<option value="13">13</option>
-						<option value="21">21</option>
-					</select>&thinsp;日（jQuery日期选择插件）
-				</td>
-			</tr>
-			<tr align="center">
-				<td align="right">联系方式：</td>
-				<td align="left">
-					<input type="text" name="tel">
-				</td>
-			</tr>
-			<tr align="center">
-				<td align="right">宿舍号：</td>
-				<td align="left">
-					<input type="text" name="address">
-				</td>
-				<tr align="center">
-				<td align="right">入职日期：</td>
-				<td align="left">
-					<select id="year1" name="year1" >
-						<option value="1995">1995</option>
-						<option value="1996">1996</option>
-						<option value="1997">1997</option>
-					</select>&thinsp;年&ensp;
-					<select id="month1" name="month1" >
-						<option value="01">01</option>
-						<option value="02">02</option>
-						<option value="03">03</option>
-					</select>&thinsp;月&ensp;
-					<select id="day1" name="day1" >
-						<option value="12">12</option>
-						<option value="13">13</option>
-						<option value="21">21</option>
-					</select>&thinsp;日（jQuery日期选择插件）
-				</td>
-			</tr>
-			<tr align="center">
-				<td colspan="2" align="center">
-					<input type="submit" value="确认">
-					&emsp;
-					<input type="reset" value="取消">
-				</td>
-			</tr>
-		</table>
-	</form>
+	<h2 class="sub-header" style="padding-left: 1em">添加成员</h2>
+	<hr>
+	<div class="table-responsive">
+		<form action="AddMember" method="post">
+			<table class="table table-striped">
+				<tbody>
+					<tr align="center">
+						<td align="right">姓名：</td>
+						<td align="left"><input type="text" size="19" name="memName"></td>
+					</tr>
+					<tr align="center">
+						<td align="right">学院：</td>
+						<td align="left"><select id="school" name="school">
+								<option value="矿业学院">矿业学院</option>
+								<option value="安全学院">安全学院</option>
+								<option value="力建学院">力建学院</option>
+								<option value="信电学院">信电学院</option>
+								<option value="电力学院">电力学院</option>
+								<option value="化工学院">化工学院</option>
+								<option value="机电学院">机电学院</option>
+								<option value="环测学院">环测学院</option>
+								<option value="材料学院">材料学院</option>
+								<option value="资源学院">资源学院</option>
+								<option value="管理学院">管理学院</option>
+								<option value="计算机学院">计算机学院</option>
+						</select></td>
+					</tr>
+					<tr align="center">
+						<td align="right">职位：</td>
+						<td align="left"><input type="radio" name="role" value="2">部长&emsp;
+							<input type="radio" name="role" value="5">副部长&emsp; <input
+							type="radio" name="role" value="3" checked="checked">干事</td>
+					</tr>
+					<tr align="center">
+						<td align="right">籍贯：</td>
+						<td align="left"><input type="text" size="19" name="hometown"></td>
+					</tr>
+					<tr align="center">
+						<td align="right">性别：</td>
+						<td align="left"><input type="radio" name="sex" value="男"
+							checked="checked">男&emsp;&emsp; <input type="radio"
+							name="sex" value="女">女</td>
+					</tr>
+					<tr align="center">
+						<td align="right">出生日期：</td>
+						<td align="left"><select id="year" name="year">
+								<option value="1995">1995</option>
+								<option value="1996">1996</option>
+								<option value="1997">1997</option>
+						</select>&thinsp;年&ensp; <select id="month" name="month">
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+						</select>&thinsp;月&ensp; <select id="day" name="day">
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="21">21</option>
+						</select>&thinsp;日（jQuery日期选择插件）</td>
+					</tr>
+					<tr align="center">
+						<td align="right">联系方式：</td>
+						<td align="left"><input type="text" name="tel"></td>
+					</tr>
+					<tr align="center">
+						<td align="right">宿舍号：</td>
+						<td align="left"><input type="text" name="address"></td>
+					<tr align="center">
+						<td align="right">入职日期：</td>
+						<td align="left"><select id="year1" name="year1">
+								<option value="1995">1995</option>
+								<option value="1996">1996</option>
+								<option value="1997">1997</option>
+						</select>&thinsp;年&ensp; <select id="month1" name="month1">
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+						</select>&thinsp;月&ensp; <select id="day1" name="day1">
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="21">21</option>
+						</select>&thinsp;日（jQuery日期选择插件）</td>
+					</tr>
+					<tr align="center">
+						<td colspan="2" align="center"><input type="submit"
+							value="确认" class="btn btn-primary" /> &emsp; <input type="reset"
+							value="取消" class="btn btn-primary" /></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

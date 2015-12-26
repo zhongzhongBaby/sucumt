@@ -4,19 +4,6 @@
 <meta charset="UTF-8">
 <title>人员管理</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/scripts.js"></script>
-<style type="text/css">
-.list>.active {
-	background-color: #d9edf7;
-}
-
-th {
-	text-align: center;
-}
-</style>
 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	$(document)
@@ -35,9 +22,11 @@ th {
 													html += "<td align=\"center\">"
 															+ jsonData[i].roleName
 															+ "</td>";
-													html += "<td align=\"center\">"
+													html += "<td align=\"center\"><a href=\"MemberDetail.html?member_id="
+															+ jsonData[i].memberId
+															+ "\">"
 															+ jsonData[i].memberName
-															+ "</td>";
+															+ "</a></td>";
 													html += "<td align=\"center\">"
 															+ jsonData[i].school
 															+ "</td>";
@@ -92,91 +81,64 @@ th {
 													html1 += "</tr>";
 												}
 											}
-											$("tbody[id='member_head']")
-													.prepend(html);
-											$("tbody[id='member_head1']")
-													.prepend(html1);
+											$("tr[id='member_head']").after(
+													html);
+											$("tr[id='member_head1']").after(
+													html1);
 										});
 					});
 </script>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<h3 class="text-left" style="padding: 1em 0 1em 1em;">学生会办公室管理系统</h3>
-				<ul class="nav nav-tabs"
-					style="padding-left: 1em; padding-right: 1em;">
-					<li><a href="#">部门管理</a></li>
-					<li class="active"><a href="#">成员管理</a></li>
-					<li><a href="#">活动管理</a></li>
-					<li><a href="#">物品管理</a></li>
-					<li class="disabled"><a href="#">权限管理</a></li>
-					<li class="dropdown pull-right"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">用户</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">个人中心</a></li>
-							<li class="divider"></li>
-							<li><a href="#">退出登录</a></li>
-						</ul></li>
-				</ul>
-				<div class="row">
-					<div class="col-md-3">
-						<ul class="nav nav-list list" style="padding: 1em;">
-							<li class="active"><a href="#">成员浏览</a></li>
-							<li><a href="#">添加成员</a></li>
-							<li><a href="#">退部处理</a></li>
-							<li><a href="#">部门之星</a></li>
-						</ul>
-					</div>
+	<h2 class="sub-header" style="padding-left: 1em">人员管理</h2>
+	<hr>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tbody>
+				<tr align="center" id="member_head">
+					<td align="center">职位</td>
+					<td align="center">姓名</td>
+					<td align="center">学院</td>
+					<td align="center">籍贯</td>
+					<td align="center">性别</td>
+					<td align="center">生日</td>
+					<td align="center">宿舍</td>
+					<td align="center">电话</td>
+					<td></td>
+					<td></td>
+				</tr>
 
-					<div class="col-md-9" style="padding-top: 1em;">
-						<blockquote>
-							<p>部门成员浏览</p>
-						</blockquote>
-						<table class="table table-hover table-condensed" id="memberDetail">
-							<thead>
-								<tr>
-									<th>职位</th>
-									<th>姓名</th>
-									<th>学院</th>
-									<th>籍贯</th>
-									<th>性别</th>
-									<th>生日</th>
-									<th>宿舍</th>
-									<th>电话</th>
-								</tr>
-							</thead>
-							<tbody id="member_head">
-								<tr align="center">
-									<td align="center" colspan="8"><a href="AddMembers.html">点此添加部门成员信息</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<blockquote>
-							<p>以下是已退部成员</p>
-						</blockquote>
-						<table class="table table-hover table-condensed"
-							id="memberDetail1">
-							<thead>
-								<tr>
-									<th>职位</th>
-									<th>姓名</th>
-									<th>学院</th>
-									<th>籍贯</th>
-									<th>性别</th>
-									<th>生日</th>
-									<th>宿舍</th>
-									<th>电话</th>
-								</tr>
-							</thead>
-							<tbody id="member_head1"></tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+				<tr align="center">
+					<td align="center" colspan="10">
+						<div class="btn-group" data-toggle="buttons">
+							<a href="AddMembers.html" class="btn btn-primary">点此添加部门成员信息</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br /> <br /> <br />
+
+		<h3 align="center">以下是已退部成员信息</h3>
+
+
+		<table class="table table-striped">
+			<tbody>
+				<tr align="center" id="member_head1">
+					<td align="center">职位</td>
+					<td align="center">姓名</td>
+					<td align="center">学院</td>
+					<td align="center">籍贯</td>
+					<td align="center">性别</td>
+					<td align="center">生日</td>
+					<td align="center">宿舍</td>
+					<td align="center">电话</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
