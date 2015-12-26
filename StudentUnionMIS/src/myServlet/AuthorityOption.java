@@ -60,21 +60,25 @@ public class AuthorityOption extends HttpServlet {
 			ResultSet rs = packing1.query(query);
 			while (rs.next()) {
 				String class_eng=rs.getString("class_eng");
+				/*System.out.println(class_eng);*/
 				/*读取上下文中的数据并写入数组*/
-				String[] authority = request.getParameterValues(class_eng);
-				for(int i=0;i<authority.length;i++){
-					String query2="insert into roleAuthority (role_id,authority_id) values('"+roleId+"','"+authority[i]+"')";
-					PackingDatabase packing2=new PackingDatabase();
-					try {
-						packing2.update(query2);
-					}catch (Exception e) {
-						System.out.println(e.getMessage());
-					}
+				if(request.getParameterValues(class_eng)!=null){
+					String[] authority = request.getParameterValues(class_eng);
+					/*System.out.println("jadhjkdah"+authority.length);*/
+					for(int i=0;i<authority.length;i++){
+						System.out.println(authority[i]);
+						String query2="insert into roleAuthority (role_id,authority_id) values('"+roleId+"','"+authority[i]+"')";
+						PackingDatabase packing2=new PackingDatabase();
+						try {
+							packing2.update(query2);
+						}catch (Exception ee) {
+							System.out.println(ee.getMessage());
+						}
+					}		
 				}
 			}
-			/*response.sendRedirect("AuthorityOption.jsp");*/
 		} catch (Exception e) {
-			System.out.println("查询时出现异常：" + e.getMessage());
+			System.out.println("查询时出现了异常：" + e.getMessage());
 		}
 	}
 

@@ -63,7 +63,7 @@ public class Addbill extends HttpServlet {
 			ptmt.setDouble(3,zanzhu);
 			ptmt.setString(4,ip+filename );
 						ptmt.execute();
-			out.print("报表已经提交！");
+			out.print("鎶ヨ〃宸茬粡鎻愪氦锛�");
 		}
 
 		catch (SQLException e) {
@@ -107,7 +107,7 @@ public class Addbill extends HttpServlet {
 			ptmt.setDouble(3,zanzhu);
 			ptmt.setString(4,ip+filename );
 						ptmt.execute();
-			out.print("报表已经提交！");
+			out.print("鎶ヨ〃宸茬粡鎻愪氦锛�");
 		}
 
 		catch (SQLException e) {
